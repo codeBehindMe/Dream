@@ -3,3 +3,4 @@ numpy
 grpcio
 tensorflow-hub
 pytest
+pillow
