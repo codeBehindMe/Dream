@@ -1,0 +1,5 @@
+tensorflow
+numpy
+grpcio
+tensorflow-hub
+pytest
