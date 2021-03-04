@@ -30,6 +30,9 @@ class TensorflowHubDetector(IDetector):
     def _load_model(self, model: TensorflowHubModel) -> object:
         return hub.load(model.value)
 
+    def preprocess_image(self, image: object) -> object:
+        raise NotImplementedError()
+    
     def detect_image(self, img: object) -> tf.Tensor:
         raise NotImplementedError() 
 
