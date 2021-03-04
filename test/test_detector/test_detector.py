@@ -4,10 +4,12 @@ from src.detector.detector import TensorflowHubModel
 
 class TestTensorflowHubDetector:
 
-    def test_load_centernet_hourglass_512x512(self):
+    def test_load_hub_model(self):
         """
-        Checks that the hourglass model loads
+        Check's that the hub model loads correctly.
         """
         # FIXME: High memory usage on test
-        centernet = TensorflowHubDetector(TensorflowHubModel.CenterNetHourGlass512x512)
-        centernet.load_detector_to_memory()
+        ssd_net = TensorflowHubDetector(TensorflowHubModel.SSDMobilNetV2)
+        ssd_net.load_detector_to_memory()
+
+        assert ssd_net.detector

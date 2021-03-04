@@ -23,6 +23,7 @@ class IDetector(metaclass=ABCMeta):
 
 class TensorflowHubModel(Enum):
     CenterNetHourGlass512x512 = "https://tfhub.dev/tensorflow/centernet/hourglass_512x512/1"
+    SSDMobilNetV2 = "https://tfhub.dev/tensorflow/ssd_mobilenet_v2/2"
 
 class TensorflowHubDetector(IDetector):
 
