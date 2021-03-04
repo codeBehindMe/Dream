@@ -4,10 +4,10 @@ import tensorflow as tf
 import tensorflow_hub as hub
 from enum import Enum
 
-class IDetector:
+class IDetector(metaclass=ABCMeta):
 
     @abstractmethod
-    def detect_image(self, img: object) -> tf.Tensor:
+    def detect_image(self, img: object) -> tf.Tensor: # FIXME: Object type hint is too broad
         pass
 
     @abstractmethod
@@ -15,7 +15,7 @@ class IDetector:
         pass
 
     @abstractmethod
-    def preprocess_image(self, image) -> object: # FIXME: Object type hint is too broad
+    def preprocess_image(self, image : object) -> object: # FIXME: Object type hint is too broad
         pass
 
 class TensorflowHubModel(Enum):
