@@ -2,7 +2,7 @@ from six import BytesIO
 from PIL import Image
 import numpy as np
 
-def load_image_to_numpy(b : BytesIO) -> np.array:
+def load_image_to_numpy(b : BytesIO) -> np.ndarray:
     """Loads a an image from BytesIO object to numpy array
 
     Args:
