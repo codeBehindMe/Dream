@@ -14,6 +14,10 @@ class IDetector:
     def load_detector_to_memory(self):
         pass
 
+    @abstractmethod
+    def preprocess_image(self):
+        pass
+
 class TensorflowHubModel(Enum):
     CenterNetHourGlass512x512 = "https://tfhub.dev/tensorflow/centernet/hourglass_512x512/1"
 
