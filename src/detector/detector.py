@@ -15,7 +15,7 @@ class IDetector:
         pass
 
     @abstractmethod
-    def preprocess_image(self):
+    def preprocess_image(self, image) -> object: # FIXME: Object type hint is too broad
         pass
 
 class TensorflowHubModel(Enum):
