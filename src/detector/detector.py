@@ -8,14 +8,17 @@ class IDetector(metaclass=ABCMeta):
 
     @abstractmethod
     def detect_image(self, img: object) -> tf.Tensor: # FIXME: Object type hint is too broad
+        # FIXME: Missing docstring.
         pass
 
     @abstractmethod
     def load_detector_to_memory(self):
+        # FIXME: Missing docstring.
         pass
 
     @abstractmethod
     def preprocess_image(self, image : object) -> object: # FIXME: Object type hint is too broad
+        # FIXME: Missing docstring.
         pass
 
 class TensorflowHubModel(Enum):
@@ -24,19 +27,24 @@ class TensorflowHubModel(Enum):
 class TensorflowHubDetector(IDetector):
 
     def __init__(self, model: TensorflowHubModel):
+        # FIXME: Missing docstring.
         self.model = model
         self.detector = None
 
     def _load_model(self, model: TensorflowHubModel) -> object:
+        # FIXME: Missing docstring.
         return hub.load(model.value)
 
     def preprocess_image(self, image: object) -> object:
+        # FIXME: Missing docstring.
         raise NotImplementedError()
     
     def detect_image(self, img: object) -> tf.Tensor:
+        # FIXME: Missing docstring.
         raise NotImplementedError() 
 
     def load_detector_to_memory(self):
+        # FIXME: Missing docstring.
         self.detector = self._load_model(self.model)
 
 
