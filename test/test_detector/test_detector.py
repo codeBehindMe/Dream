@@ -39,3 +39,17 @@ class TestTensorflowHubDetector:
         ssd_net = TensorflowHubDetector(TensorflowHubModel.SSDMobilNetV2)
         ssd_net.load_detector()
         assert isinstance(ssd_net.preprocess_image(image), np.ndarray)
+
+    def test_detection_with_byte_io_success(self, image:BytesIO):
+        """
+        Check's that a BytesIO image data can be be detected on.
+        Args:
+            image: BytesIO interfaced image data.
+
+        Returns:
+
+        """
+        ssd_net = TensorflowHubDetector(TensorflowHubModel.SSDMobilNetV2)
+        ssd_net.load_detector()
+
+        assert ssd_net.detect(image)
