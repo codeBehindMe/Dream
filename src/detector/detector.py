@@ -1,15 +1,20 @@
 from abc import ABCMeta
 from abc import abstractmethod
+from enum import Enum
 from io import BytesIO
 
+import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
-from enum import Enum
+
+from src.utils.image import load_image_to_numpy
+
 
 class IDetector(metaclass=ABCMeta):
 
     @abstractmethod
-    def detect(self, img: BytesIO) -> tf.Tensor: # FIXME: Object type hint is too broad
+    def detect(self,
+               img: BytesIO) -> tf.Tensor:  # FIXME: Object type hint is too broad
         # FIXME: Missing docstring.
         pass
 
@@ -19,13 +24,16 @@ class IDetector(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def preprocess_image(self, image : object) -> object: # FIXME: Object type hint is too broad
+    def preprocess_image(self,
+                         image: object) -> object:  # FIXME: Object type hint is too broad
         # FIXME: Missing docstring.
         pass
+
 
 class TensorflowHubModel(Enum):
     CenterNetHourGlass512x512 = "https://tfhub.dev/tensorflow/centernet/hourglass_512x512/1"
     SSDMobilNetV2 = "https://tfhub.dev/tensorflow/ssd_mobilenet_v2/2"
+
 
 class TensorflowHubDetector(IDetector):
 
@@ -39,16 +47,14 @@ class TensorflowHubDetector(IDetector):
         # FIXME: Missing docstring.
         return hub.load(model.value)
 
-    def preprocess_image(self, image: object) -> object:
+    def preprocess_image(self, image: BytesIO) -> np.ndarray:
         # FIXME: Missing docstring.
-        return image
+        return load_image_to_numpy(image)
 
     def detect(self, img: object) -> tf.Tensor:
         # FIXME: Missing docstring.
-        raise NotImplementedError() 
+        raise NotImplementedError()
 
     def load_detector(self):
         # FIXME: Missing docstring.
         self.detector = self._load_model(self.model)
-
-

@@ -1,11 +1,12 @@
 from io import BytesIO
 
+import numpy as np
 import pytest
 import requests
 
 from src.detector.detector import TensorflowHubDetector
 from src.detector.detector import TensorflowHubModel
-from src.utils.image import load_image_to_numpy
+
 
 @pytest.fixture(scope='class')
 def image():
@@ -27,7 +28,8 @@ class TestTensorflowHubDetector:
 
         assert ssd_net.detector
 
-    def test_preprocess_function_makes_tensorflow_ready_image(self, image: BytesIO):
+    def test_preprocess_function_makes_tensorflow_ready_image(self,
+                                                              image: BytesIO):
         """
         Check's that the preprocess_image method correctly returns a tensorflow
         type.
@@ -36,4 +38,4 @@ class TestTensorflowHubDetector:
         """
         ssd_net = TensorflowHubDetector(TensorflowHubModel.SSDMobilNetV2)
         ssd_net.load_detector()
-        ssd_net.preprocess_image(load_image_to_numpy(image))
+        assert isinstance(ssd_net.preprocess_image(image), np.ndarray)
