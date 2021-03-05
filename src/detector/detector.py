@@ -1,5 +1,7 @@
 from abc import ABCMeta
 from abc import abstractmethod
+from io import BytesIO
+
 import tensorflow as tf
 import tensorflow_hub as hub
 from enum import Enum
@@ -7,7 +9,7 @@ from enum import Enum
 class IDetector(metaclass=ABCMeta):
 
     @abstractmethod
-    def detect_image(self, img: object) -> tf.Tensor: # FIXME: Object type hint is too broad
+    def detect(self, img: BytesIO) -> tf.Tensor: # FIXME: Object type hint is too broad
         # FIXME: Missing docstring.
         pass
 
@@ -38,9 +40,9 @@ class TensorflowHubDetector(IDetector):
 
     def preprocess_image(self, image: object) -> object:
         # FIXME: Missing docstring.
-        raise NotImplementedError()
-    
-    def detect_image(self, img: object) -> tf.Tensor:
+        return image
+
+    def detect(self, img: object) -> tf.Tensor:
         # FIXME: Missing docstring.
         raise NotImplementedError() 
 
