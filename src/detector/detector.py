@@ -2,6 +2,7 @@ from abc import ABCMeta
 from abc import abstractmethod
 from enum import Enum
 from io import BytesIO
+from typing import Dict
 
 import numpy as np
 import tensorflow as tf
@@ -14,7 +15,7 @@ class IDetector(metaclass=ABCMeta):
 
     @abstractmethod
     def detect(self,
-               img: BytesIO) -> tf.Tensor:  # FIXME: Object type hint is too broad
+               img: BytesIO) -> Dict:
         # FIXME: Missing docstring.
         pass
 
