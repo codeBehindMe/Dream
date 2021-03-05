@@ -34,7 +34,8 @@ class TensorflowHubDetector(IDetector):
         self.model = model
         self.detector = None
 
-    def _load_model(self, model: TensorflowHubModel) -> object:
+    @staticmethod
+    def _load_model(model: TensorflowHubModel) -> object:
         # FIXME: Missing docstring.
         return hub.load(model.value)
 
