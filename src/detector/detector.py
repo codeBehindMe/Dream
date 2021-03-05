@@ -12,7 +12,7 @@ class IDetector(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def load_detector_to_memory(self):
+    def load_detector(self):
         # FIXME: Missing docstring.
         pass
 
@@ -44,7 +44,7 @@ class TensorflowHubDetector(IDetector):
         # FIXME: Missing docstring.
         raise NotImplementedError() 
 
-    def load_detector_to_memory(self):
+    def load_detector(self):
         # FIXME: Missing docstring.
         self.detector = self._load_model(self.model)
 

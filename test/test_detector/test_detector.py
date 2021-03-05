@@ -10,6 +10,6 @@ class TestTensorflowHubDetector:
         """
         # FIXME: High memory usage on test
         ssd_net = TensorflowHubDetector(TensorflowHubModel.SSDMobilNetV2)
-        ssd_net.load_detector_to_memory()
+        ssd_net.load_detector()
 
         assert ssd_net.detector
